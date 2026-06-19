@@ -1,11 +1,13 @@
+
 import telebot
 import random
 import requests
 import json
 import sqlite3
 from datetime import datetime
+import os
 
-# ========== CONFIGURACIÓN ==========
+# ========== CONFIGURACIÓN (tus datos ya puestos) ==========
 TOKEN = "8037309678:AAHgcOzlfF_3g1BBD_8RkMNpDgEgLLVV9vc"
 ADSGRAM_TOKEN = "757fcee3c4fc4425acaeed9044fd1669"
 BLOCK_ID = "35673"
@@ -23,8 +25,7 @@ CREATE TABLE IF NOT EXISTS users (
     first_name TEXT,
     balance REAL DEFAULT 0,
     referred_by INTEGER DEFAULT 0,
-    referrals INTEGER DEFAULT 0,
-    last_daily DATETIME
+    referrals INTEGER DEFAULT 0
 )
 ''')
 conn.commit()
@@ -87,7 +88,7 @@ def show_menu(message):
     balance = get_balance(user_id)
     
     txt = f"""
-🏆 *RICH TASK - Gana USDT*
+🏆 *GANADOR TASKS - Gana USDT*
 
 💰 *Saldo:* {balance:.3f} USDT
 
